@@ -36,11 +36,8 @@
     "prettier-eslint-cli": "^4.7.1"
   },
   "lint-staged": {
-    "*.js": [
-      "eslint"
-    ],
     "*.{js,css}": [
-      "prettier-eslint",
+      "eslint --fix",
       "git add"
     ]
   }

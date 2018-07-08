@@ -1,12 +1,31 @@
-export const FETCH_DATA = 'fetch_data';
+import {
+  LOGIN,
+  LOGIN_SUCCESS,
+  LOGIN_ERROR,
+  login,
+  loginSuccess,
+  loginError
+} from './Login';
+import {
+  SIGNUP,
+  SIGNUP_SUCCESS,
+  SIGNUP_ERROR,
+  signup,
+  signupSuccess,
+  signupError
+} from './Signup';
 
-// default function to display redux action format
-export function defaultFunction() {
-    let testVar = 'Hello';
-
-    // action object format being return to a reducer
-    return {
-        type: FETCH_DATA,
-        payload: testVar
-    }
-}
+export {
+  LOGIN,
+  LOGIN_SUCCESS,
+  LOGIN_ERROR,
+  login,
+  loginSuccess,
+  loginError,
+  SIGNUP,
+  SIGNUP_SUCCESS,
+  SIGNUP_ERROR,
+  signup,
+  signupSuccess,
+  signupError
+};

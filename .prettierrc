@@ -6,6 +6,5 @@
   "parser": "babylon",
   "trailingComma": "none",
   "jsxBracketSameLine": false,
-  "noSemi": true,
-  "rcVerbose": true
+  "semi": true
 }

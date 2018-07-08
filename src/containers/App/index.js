@@ -1,24 +1,23 @@
 // @flow
 
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { defaultFunction } from './actions';
+
+const AppContainer = styled.div``;
 
 class App extends Component {
 
   componentDidMount() {
     // call default function to display redux operation
-    this.props.defaultFunction();
+    // this.props.defaultFunction();
   }
 
   render() {
     return (
-      <div>
-        React Redux Starter Template
-      </div>
+      <AppContainer>
+        App with state
+      </AppContainer>
     );
   }
 }
@@ -30,4 +29,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { defaultFunction })(App);
+export default connect(mapStateToProps, { })(App);

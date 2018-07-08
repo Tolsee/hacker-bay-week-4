@@ -1,5 +1,5 @@
 {
-  "name": "react-redux-starter-template",
+  "name": "hacker-bay-week-4",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -21,7 +21,7 @@
     "precommit": "lint-staged"
   },
   "devDependencies": {
-    "eslint": "^5.0.1",
+    "eslint": "^4.0.0",
     "eslint-config-airbnb": "^17.0.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-flowtype": "^2.49.3",

@@ -5,23 +5,27 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 
+import { BrowserRouter } from 'react-router-dom';
+
+import createSagaMiddleware from 'redux-saga';
 import reducers from 'reducers';
 import saga from 'saga';
-import createSagaMiddleware from 'redux-saga';
 
-import './index.css';
 import App from 'containers/App';
 import registerServiceWorker from 'registerServiceWorker';
-
+import './globalSyles';
+import 'assets/css/antd.css';
 const store = createStore(
-    reducers,
-    applyMiddleware(logger, createSagaMiddleware(saga))
+  reducers,
+  applyMiddleware(logger, createSagaMiddleware(saga))
 );
 
 ReactDOM.render(
+  <BrowserRouter>
     <Provider store={store}>
-        <App />
+      <App />
     </Provider>
-    , document.getElementById('root'));
+  </BrowserRouter>
+  , document.getElementById('root'));
 
 registerServiceWorker();

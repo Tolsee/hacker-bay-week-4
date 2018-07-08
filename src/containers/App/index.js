@@ -1,32 +1,27 @@
 // @flow
 
 import React, { Component } from 'react';
+import { Switch, Route } from 'react-router-dom';
+
 import styled from 'styled-components';
-import { connect } from 'react-redux';
+import Layout from 'components/App/Layout';
+import Login from 'components/Login';
+import Signup from 'components/Signup';
 
-const AppContainer = styled.div``;
+const Home = styled.div`
+  font-size: 20px;
+`;
 
-class App extends Component {
-
-  componentDidMount() {
-    // call default function to display redux operation
-    // this.props.defaultFunction();
-  }
-
+export default class App extends Component {
   render() {
     return (
-      <AppContainer>
-        App with state
-      </AppContainer>
+      <Layout>
+        <Switch>
+          <Route exact path='/' component={() => <Home>Home</Home>}/>
+          <Route path='/login' component={Login}/>
+          <Route path='/signup' component={Signup}/>
+        </Switch>
+      </Layout>
     );
   }
 }
-
-// function to convert the global state obtained from redux to local props
-function mapStateToProps(state) {
-  return {
-    default: state.default
-  };
-}
-
-export default connect(mapStateToProps, { })(App);

@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   root: true, // make to not take in any user specified rules in parent folders
   parser: 'babel-eslint',
   extends: ['airbnb', 'prettier', 'prettier/flowtype', 'prettier/react'],
@@ -12,4 +12,11 @@ module.exports = {
     'react/prop-types': 0,
     'react/jsx-filename-extension': 0,
   },
+  'settings': {
+    'import/resolver': {
+      'node': {
+        'paths': ['src']
+      }
+    }
+  }
 };

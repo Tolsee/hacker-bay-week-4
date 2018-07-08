@@ -40,7 +40,8 @@
       "eslint"
     ],
     "*.{js,css}": [
-      "prettier-eslint --list-different"
+      "prettier-eslint",
+      "git add"
     ]
   }
 }

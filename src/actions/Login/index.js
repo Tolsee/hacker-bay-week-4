@@ -3,6 +3,7 @@ export const LOGIN_SUCCESS = 'containers/login/LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'containers/login/LOGIN_ERROR';
 
 export const login = (data) => {
+  console.log('Action: ', data);
   return {
     type: LOGIN,
     payload: data

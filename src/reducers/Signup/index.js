@@ -10,6 +10,7 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
+  console.log('Action dispatched: ', action);
   switch(action.type) {
     case SIGNUP:
       return { ...state, loading: true };

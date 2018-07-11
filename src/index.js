@@ -17,8 +17,10 @@ import './globalSyles';
 import 'assets/css/antd.css';
 const store = createStore(
   reducers,
-  applyMiddleware(logger, createSagaMiddleware(saga))
+  applyMiddleware(logger, createSagaMiddleware())
 );
+
+createSagaMiddleware.run(saga);
 
 ReactDOM.render(
   <BrowserRouter>

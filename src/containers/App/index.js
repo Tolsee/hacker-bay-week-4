@@ -5,8 +5,8 @@ import { Switch, Route } from 'react-router-dom';
 
 import styled from 'styled-components';
 import Layout from 'components/App/Layout';
-import Login from 'components/Login';
-import Signup from 'components/Signup';
+import Login from 'containers/Login';
+import Signup from 'containers/Signup';
 
 const Home = styled.div`
   font-size: 20px;

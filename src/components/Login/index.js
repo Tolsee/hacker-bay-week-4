@@ -2,6 +2,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
+import { reduxForm, Field } from 'redux-form';
 
 import {
   Form,
@@ -21,7 +22,62 @@ const LoginButton = styled(Button)`
   width: 100%;
 `;
 
-export default class Login extends React.Component {
+type Props = {
+
+};
+
+const Login = (props: Props) => {
+  const { handleSubmit, pristine, submitting } = props;
+
+  return (
+    <React.Fragment>
+      <Heading>Login</Heading>
+      <form onSubmit={handleSubmit}>
+        <FormItem>
+          <Field
+            name="email"
+            component={ ({input: { value, onChange }}) => (
+              <Input
+                placeholder="Enter your email"
+                prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                // suffix={suffix}
+                value={value}
+                onChange={onChange}
+                // ref={node => this.userNameInput = node}
+              />
+            )}/>
+        </FormItem>
+        <FormItem>
+          <Field
+            name="password"
+            component={ ({ input: { value, onChange }}) => (
+              <Input
+                placeholder="Enter your password"
+                prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                // suffix={suffix}
+                type="password"
+                value={value}
+                onChange={onChange}
+                // ref={node => this.userNameInput = node}
+              />
+            )}/>
+        </FormItem>
+        <FormItem>
+          <LoginButton type="primary" htmlType="submit" disabled={pristine || submitting}>
+            Log in
+          </LoginButton>
+          Or <a href="/signup">register now!</a>
+        </FormItem>
+      </form>
+    </React.Fragment>
+  )
+};
+
+export default reduxForm({
+  form: 'login-form'
+})(Login);
+
+/*export default class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -73,5 +129,4 @@ export default class Login extends React.Component {
       </React.Fragment>
     );
   }
-}
-
+}*/

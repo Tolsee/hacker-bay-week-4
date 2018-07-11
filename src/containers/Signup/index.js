@@ -6,7 +6,7 @@ import Signup from 'components/Signup';
 import { signup } from 'actions';
 
 const mapStateToProps = state => ({
-
+  signupFormData: state.signupReducer
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -19,14 +19,12 @@ type Props = {
 
 class SignupContainer extends Component<Props> {
   signup = values => {
-    console.log(values);
     this.props.signup(values);
   };
 
   render() {
-    console.log('Props: ', this.props);
     return (
-      <Signup {...this.props} onSubmit={this.signup}/>
+      <Signup {...this.props} onSubmit={this.signup} />
     )
   }
 }

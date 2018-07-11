@@ -15,12 +15,15 @@ import App from 'containers/App';
 import registerServiceWorker from 'registerServiceWorker';
 import './globalSyles';
 import 'assets/css/antd.css';
+
+const sagaMiddleware = createSagaMiddleware();
+
 const store = createStore(
   reducers,
-  applyMiddleware(logger, createSagaMiddleware())
+  applyMiddleware(logger, sagaMiddleware)
 );
 
-createSagaMiddleware.run(saga);
+sagaMiddleware.run(saga);
 
 ReactDOM.render(
   <BrowserRouter>

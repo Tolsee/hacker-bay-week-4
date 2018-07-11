@@ -13,15 +13,30 @@ export class Request {
         },
         body: data && JSON.stringify(data)
       };
-      const url = process.env.API_ENDPOINT + path;
-      return fetch(url, options)
-        .then(res => res.json());
+      const url = process.env.REACT_APP_API_ENDPOINT + path;
+      const response = fetch(url, options);
+      let statusCode;
+
+      return response
+        .then(res => {
+          statusCode = res.status;
+          return res.json();
+        })
+        .then(res => ({
+          data: res,
+          statusCode
+        }));
     };
 
     return function* loader() {
       try {
         const res = yield call(request);
-        yield put(onSuccess(res));
+        console.log(res);
+        if (res.statusCode === 200) {
+          yield put(onSuccess(res.data));
+        } else {
+          yield put(onError(res.data));
+        }
       } catch (e) {
         yield put(onError(e));
       }
@@ -33,7 +48,7 @@ export class Request {
       method: 'GET'
     };
 
-    return this.request(path, options, onError, onError);
+    return this.request(path, options, onSuccess, onError);
   }
 
   static post(path, onSuccess, onError, data) {
@@ -41,7 +56,7 @@ export class Request {
       method: 'POST'
     };
 
-    return this.request(path, options, onError, onError, data);
+    return this.request(path, options, onSuccess, onError, data);
   }
 }
 

@@ -27,11 +27,11 @@ type Props = {
 };
 
 const Signup = (props: Props) => {
-  const { handleSubmit, pristine, submitting } = props;
-
+  const { handleSubmit, pristine, submitting, signupFormData: { error }} = props;
   return (
     <React.Fragment>
       <Heading>Signup</Heading>
+      <Heading>{error}</Heading>
       <form onSubmit={handleSubmit}>
         <FormItem>
           <Field

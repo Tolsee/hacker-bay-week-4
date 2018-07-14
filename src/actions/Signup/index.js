@@ -3,7 +3,6 @@ export const SIGNUP_SUCCESS = 'containers/signup/SIGNUP_SUCCESS';
 export const SIGNUP_ERROR = 'containers/signup/SIGNUP_ERROR';
 
 export const signup = (data) => {
-  console.log('Action: ', data);
   return {
     type: SIGNUP,
     payload: data

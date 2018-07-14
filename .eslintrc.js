@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   root: true, // make to not take in any user specified rules in parent folders
   parser: 'babel-eslint',
   extends: ['airbnb', 'prettier', 'prettier/flowtype', 'prettier/react'],
@@ -19,4 +19,4 @@ export default {
       }
     }
   }
-}
+};

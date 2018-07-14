@@ -14,7 +14,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 type Props = {
-  signup: Function
+  login: Function
 };
 
 class LoginContainer extends Component<Props> {

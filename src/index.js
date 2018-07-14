@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import { ThemeProvider } from 'styled-components';
+
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
@@ -14,16 +16,24 @@ import saga from 'saga';
 import App from 'containers/App';
 import registerServiceWorker from 'registerServiceWorker';
 import './globalSyles';
+import theme from './theme';
 import 'assets/css/antd.css';
+
+const sagaMiddleware = createSagaMiddleware();
+
 const store = createStore(
   reducers,
-  applyMiddleware(logger, createSagaMiddleware(saga))
+  applyMiddleware(logger, sagaMiddleware)
 );
+
+sagaMiddleware.run(saga);
 
 ReactDOM.render(
   <BrowserRouter>
     <Provider store={store}>
-      <App />
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
     </Provider>
   </BrowserRouter>
   , document.getElementById('root'));

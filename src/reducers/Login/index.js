@@ -10,11 +10,12 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
+  console.log(action);
   switch(action.type) {
     case LOGIN:
       return { ...state, loading: true };
     case LOGIN_SUCCESS:
-      return { ...state, loading: false};
+      return { ...state, loading: false };
     case LOGIN_ERROR:
       return { ...state, loading: false, error: action.payload };
     default:

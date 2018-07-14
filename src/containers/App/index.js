@@ -1,12 +1,13 @@
 // @flow
 
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 
 import styled from 'styled-components';
 import Layout from 'components/App/Layout';
-import Login from 'components/Login';
-import Signup from 'components/Signup';
+import Login from 'containers/Login';
+import Signup from 'containers/Signup';
+import { Authenticated, UnAuthenticated } from 'components/common/Authentication';
 
 const Home = styled.div`
   font-size: 20px;
@@ -17,9 +18,9 @@ export default class App extends Component {
     return (
       <Layout>
         <Switch>
-          <Route exact path='/' component={() => <Home>Home</Home>}/>
-          <Route path='/login' component={Login}/>
-          <Route path='/signup' component={Signup}/>
+          <Authenticated exact path='/' render={() => <Home>Home</Home>} />
+          <UnAuthenticated path='/login' component={Login}/>
+          <UnAuthenticated path='/signup' component={Signup}/>
         </Switch>
       </Layout>
     );

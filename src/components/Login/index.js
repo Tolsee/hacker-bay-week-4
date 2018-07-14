@@ -2,15 +2,20 @@
 
 import React from 'react';
 import styled from 'styled-components';
+import { reduxForm, Field } from 'redux-form';
+import { Link } from 'react-router-dom';
 
 import {
   Form,
   Button,
-  Input,
   Icon
 } from 'antd';
+import { renderField } from 'components/common/Form/Field';
+import FormInfo from 'components/common/Form/Info';
+import { required, minLength, email } from 'utils/validation';
 
 const { Item: FormItem } = Form;
+const minLength8 = minLength(8);
 
 const Heading = styled.h2`
   width: 100%;
@@ -21,7 +26,57 @@ const LoginButton = styled(Button)`
   width: 100%;
 `;
 
-export default class Login extends React.Component {
+type Props = {
+  handleSubmit: Function,
+  pristine: boolean,
+  submitting: boolean,
+  loginFormData: { error: string }
+};
+
+const Login = (props: Props) => {
+  const { handleSubmit, pristine, submitting, loginFormData: { error } } = props;
+
+  return (
+    <React.Fragment>
+      <Heading>Login</Heading>
+      {error && <FormInfo message={error} type="error" />}
+      <form onSubmit={handleSubmit}>
+        <FormItem>
+          <Field
+            name="email"
+            label="Please enter your email"
+            type="text"
+            validate={[required, email]}
+            component={renderField}
+            Prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
+            fieldTouched={!pristine}/>
+        </FormItem>
+        <FormItem>
+          <Field
+            name="password"
+            label="Please enter your password"
+            type="password"
+            validate={[required, minLength8]}
+            component={renderField}
+            Prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+            fieldTouched={!pristine}/>
+        </FormItem>
+        <FormItem>
+          <LoginButton type="primary" htmlType="submit" disabled={pristine || submitting}>
+            Log in
+          </LoginButton>
+          Or <Link to="/signup">register now!</Link>
+        </FormItem>
+      </form>
+    </React.Fragment>
+  )
+};
+
+export default reduxForm({
+  form: 'login-form'
+})(Login);
+
+/*export default class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -73,5 +128,4 @@ export default class Login extends React.Component {
       </React.Fragment>
     );
   }
-}
-
+}*/

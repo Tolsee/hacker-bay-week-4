@@ -3,15 +3,18 @@
 import React from 'react';
 import styled from 'styled-components';
 import { reduxForm, Field } from 'redux-form';
-
+import { Link } from 'react-router-dom';
 import {
   Form,
   Button,
-  Input,
   Icon
 } from 'antd';
+import { renderField } from 'components/common/Form/Field';
+import FormInfo from 'components/common/Form/Info';
+import { required, minLength, email } from 'utils/validation';
 
 const { Item: FormItem } = Form;
+const minLength8 = minLength(8);
 
 const Heading = styled.h2`
   width: 100%;
@@ -23,50 +26,44 @@ const SignupButton = styled(Button)`
 `;
 
 type Props = {
-
-};
+  handleSubmit: Function,
+  pristine: boolean,
+  submitting: boolean,
+  signupFormData: { error: string }
+}
 
 const Signup = (props: Props) => {
-  const { handleSubmit, pristine, submitting, signupFormData: { error }} = props;
+  const { handleSubmit, pristine, submitting, signupFormData: { error } } = props;
   return (
     <React.Fragment>
       <Heading>Signup</Heading>
-      <Heading>{error}</Heading>
+      {error && <FormInfo message={error} type="error" />}
       <form onSubmit={handleSubmit}>
         <FormItem>
           <Field
             name="email"
-            component={ ({input: { value, onChange }}) => (
-              <Input
-                placeholder="Enter your email"
-                prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                // suffix={suffix}
-                value={value}
-                onChange={onChange}
-                // ref={node => this.userNameInput = node}
-              />
-            )}/>
+            label="Please enter your email"
+            type="text"
+            validate={[required, email]}
+            component={renderField}
+            Prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
+            fieldTouched={!pristine}/>
         </FormItem>
         <FormItem>
           <Field
             name="password"
-            component={ ({ input: { value, onChange }}) => (
-              <Input
-                placeholder="Enter your password"
-                prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                // suffix={suffix}
-                type="password"
-                value={value}
-                onChange={onChange}
-                // ref={node => this.userNameInput = node}
-              />
-            )}/>
+            label="Please enter your password"
+            type="password"
+            validate={[required, minLength8]}
+            component={renderField}
+            Prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+            fieldTouched={!pristine}/>
         </FormItem>
         <FormItem>
           <SignupButton type="primary" htmlType="submit" disabled={pristine || submitting}>
             Singup
           </SignupButton>
-          Already have an account <a href="/login">Login</a>
+          Already have an account <Link to="/login">Login</Link>
         </FormItem>
       </form>
     </React.Fragment>

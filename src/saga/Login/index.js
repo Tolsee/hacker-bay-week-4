@@ -2,13 +2,20 @@ import { takeLatest } from 'redux-saga';
 import { call } from 'redux-saga/effects';
 
 import { Request } from 'saga/index';
-import { LOGIN, loginSuccess, loginError } from 'actions';
+import { LOGIN, LOGIN_SUCCESS, loginSuccess, loginError } from 'actions';
+import { setSession } from 'utils/session';
+import { message } from 'antd';
 
 function* login(action) {
-  console.log('Action watched', action);
   yield call(Request.post('/user/login', loginSuccess, loginError, action.payload));
+}
+
+function* onSuccess(action) {
+  setSession(action.payload.session);
+  message.success('Logged In Successfully.');
 }
 
 export default function* loginSage() {
   yield takeLatest(LOGIN, login);
+  yield takeLatest(LOGIN_SUCCESS, onSuccess);
 };

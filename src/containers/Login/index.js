@@ -6,7 +6,7 @@ import Login from 'components/Login';
 import { login } from 'actions';
 
 const mapStateToProps = state => ({
-
+  loginFormData: state.loginReducer
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -1,4 +1,5 @@
 import { call, fork, put } from 'redux-saga/effects';
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import loginSaga from './Login';
 import signupSaga from './Signup';
 
@@ -30,8 +31,8 @@ export class Request {
 
     return function* loader() {
       try {
+        yield put(showLoading());
         const res = yield call(request);
-        console.log(res);
         if (res.statusCode === 200) {
           yield put(onSuccess(res.data));
         } else {
@@ -39,6 +40,8 @@ export class Request {
         }
       } catch (e) {
         yield put(onError(e));
+      } finally {
+        yield put(hideLoading());
       }
     };
   }

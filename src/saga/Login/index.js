@@ -12,7 +12,7 @@ function* login(action) {
 
 function* onSuccess(action) {
   setSession(action.payload.session);
-  message.success('Logged In Successfully.');
+  yield message.success('Logged In Successfully.');
 }
 
 export default function* loginSage() {

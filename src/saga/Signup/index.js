@@ -12,7 +12,7 @@ function* signup(action) {
 
 function* onSuccess(action) {
   setSession(action.payload.session);
-  message.success('Signed Up Successfully.');
+  yield message.success('Signed Up Successfully.');
 }
 
 export default function* signupSage() {

@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
@@ -18,7 +19,10 @@ type Props = {
 };
 
 class LoginContainer extends Component<Props> {
-  login = (values) => this.props.login(values);
+  login = (values) => {
+    const { login: loginHandler } = this.props;
+    loginHandler(values);
+  };
 
   render() {
     return (

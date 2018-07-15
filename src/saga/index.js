@@ -6,8 +6,8 @@ import signupSaga from './Signup';
 export class Request {
   static request(path, options, onSuccess, onError, data) {
     const request = () => {
-      options = options || {};
-      options = {
+      let allOptions = options || {};
+      allOptions = {
         ...options,
         headers: {
           'Content-Type': 'application/json'
@@ -15,7 +15,7 @@ export class Request {
         body: data && JSON.stringify(data)
       };
       const url = process.env.REACT_APP_API_ENDPOINT + path;
-      const response = fetch(url, options);
+      const response = fetch(url, allOptions);
       let statusCode;
 
       return response

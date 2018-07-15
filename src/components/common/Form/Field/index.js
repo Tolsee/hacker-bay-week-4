@@ -1,3 +1,4 @@
+// @flow
 import * as React from 'react';
 import styled from 'styled-components';
 import {
@@ -32,17 +33,16 @@ export const renderField =  ({
                                type,
                                label,
                                fieldTouched
-                             }: fieldProps)  =>  {
-  return (
+                             }: fieldProps)  =>  (
     <React.Fragment>
       <Input
         {...input}
         placeholder={label}
         prefix={Prefix}
+        Suffix={Suffix}
         type={type}
       />
       { fieldTouched && error && <ErrorMessage>{error}</ErrorMessage>}
     </React.Fragment>
-  )
-};
+  );
 

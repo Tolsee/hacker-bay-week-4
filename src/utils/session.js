@@ -1,7 +1,4 @@
-export const getSession = () => {
-  return localStorage.getItem('session');
-};
+// @flow
+export const getSession = () => localStorage.getItem('session');
 
-export const setSession = (val: string) => {
-  return localStorage.setItem('session', val);
-}
+export const setSession = (val: string) => localStorage.setItem('session', val)

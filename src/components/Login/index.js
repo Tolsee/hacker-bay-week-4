@@ -1,5 +1,4 @@
 // @flow
-
 import React from 'react';
 import styled from 'styled-components';
 import { reduxForm, Field } from 'redux-form';
@@ -76,7 +75,7 @@ export default reduxForm({
   form: 'login-form'
 })(Login);
 
-/*export default class Login extends React.Component {
+/* export default class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -128,4 +127,4 @@ export default reduxForm({
       </React.Fragment>
     );
   }
-}*/
+} */

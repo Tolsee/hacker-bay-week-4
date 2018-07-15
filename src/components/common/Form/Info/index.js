@@ -6,4 +6,5 @@ const Info = styled(Alert)`
     margin: 10px 0;
   }
 `;
+
 export default Info;

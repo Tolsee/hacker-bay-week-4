@@ -11,6 +11,14 @@ module.exports = {
   rules: {
     'react/prop-types': 0,
     'react/jsx-filename-extension': 0,
+    'import/no-extraneous-dependencies': [
+      {
+        devDependencies: [
+          '.storybook/**',
+          'stories/**'
+        ]
+      }
+    ]
   },
   'settings': {
     'import/resolver': {

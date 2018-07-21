@@ -6,7 +6,7 @@ import {
   Alert
 } from 'antd';
 
-const ErrorMessage = styled.span`
+export const ErrorMessage = styled.span`
   color: ${({ theme }) => theme.danger };
   line-height: 1.5;
   -webkit-transition: color .3s cubic-bezier(.215,.61,.355,1);
@@ -19,8 +19,8 @@ const ErrorMessage = styled.span`
 type fieldProps = {
   input: Object ,
   meta: { error: any },
-  Prefix: React.Node,
-  Suffix: React.Node,
+  prefix: React.Node,
+  suffix: React.Node,
   type: string,
   label: string,
   fieldTouched: boolean
@@ -29,8 +29,8 @@ type fieldProps = {
 export const renderField =  ({
                                input ,
                                meta: { error },
-                               Prefix,
-                               Suffix,
+                               prefix,
+                               suffix,
                                type,
                                label,
                                fieldTouched
@@ -39,8 +39,8 @@ export const renderField =  ({
     <Input
       {...input}
       placeholder={label}
-      prefix={Prefix}
-      Suffix={Suffix}
+      prefix={prefix}
+      Suffix={suffix}
       type={type}
     />
     { fieldTouched && error && <ErrorMessage>{error}</ErrorMessage>}

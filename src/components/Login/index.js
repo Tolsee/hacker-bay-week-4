@@ -46,7 +46,7 @@ const Login = (props: Props) => {
             type="text"
             validate={[required, email]}
             component={renderField}
-            Prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
+            prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
             fieldTouched={!pristine}/>
         </FormItem>
         <FormItem>
@@ -56,7 +56,7 @@ const Login = (props: Props) => {
             type="password"
             validate={[required, minLength8]}
             component={renderField}
-            Prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+            prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
             fieldTouched={!pristine}/>
         </FormItem>
         <FormItem>
@@ -74,56 +74,3 @@ export default reduxForm({
   form: 'login-form'
 })(Login);
 
-/* export default class Login extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      userName: '',
-    };
-  }
-
-  emitEmpty = () => {
-    this.userNameInput.focus();
-    this.setState({ userName: '' });
-  }
-
-  onChangeUserName = (e) => {
-    this.setState({ userName: e.target.value });
-  }
-
-  render() {
-    const { userName } = this.state;
-    const suffix = userName ? <Icon type="close-circle" onClick={this.emitEmpty} /> : null;
-    return (
-      <React.Fragment>
-        <Heading>Login</Heading>
-        <FormItem>
-          <Input
-            placeholder="Enter your email"
-            prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
-            suffix={suffix}
-            value={userName}
-            onChange={this.onChangeUserName}
-            ref={node => this.userNameInput = node}
-          />
-        </FormItem>
-        <FormItem>
-          <Input
-            placeholder="Enter your password"
-            prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-            suffix={suffix}
-            value={userName}
-            onChange={this.onChangeUserName}
-            ref={node => this.userNameInput = node}
-          />
-        </FormItem>
-        <FormItem>
-          <LoginButton type="primary" htmlType="submit" className="login-form-button">
-            Log in
-          </LoginButton>
-          Or <a href="/signup">register now!</a>
-        </FormItem>
-      </React.Fragment>
-    );
-  }
-} */

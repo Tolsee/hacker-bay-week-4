@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Form elements renders correctly 1`] = `
+exports[`Info renders correctly 1`] = `
 <Alert
   className="sc-bwzfXH hQDmqP"
   message="Facebook"

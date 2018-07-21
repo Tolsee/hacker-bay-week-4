@@ -2,7 +2,8 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import {
-  Input
+  Input,
+  Alert
 } from 'antd';
 
 const ErrorMessage = styled.span`
@@ -34,15 +35,21 @@ export const renderField =  ({
                                label,
                                fieldTouched
                              }: fieldProps)  =>  (
-    <React.Fragment>
-      <Input
-        {...input}
-        placeholder={label}
-        prefix={Prefix}
-        Suffix={Suffix}
-        type={type}
-      />
-      { fieldTouched && error && <ErrorMessage>{error}</ErrorMessage>}
-    </React.Fragment>
-  );
+  <React.Fragment>
+    <Input
+      {...input}
+      placeholder={label}
+      prefix={Prefix}
+      Suffix={Suffix}
+      type={type}
+    />
+    { fieldTouched && error && <ErrorMessage>{error}</ErrorMessage>}
+  </React.Fragment>
+);
+
+export const Info = styled(Alert)`
+  && {
+    margin: 10px 0;
+  }
+`;
 

@@ -8,8 +8,7 @@ import {
   Button,
   Icon
 } from 'antd';
-import { renderField } from 'components/common/Form/Field';
-import FormInfo from 'components/common/Form/Info';
+import { renderField, Info as FormInfo } from 'components/common/Form';
 import { required, minLength, email } from 'utils/validation';
 
 const { Item: FormItem } = Form;

@@ -2,10 +2,11 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import {
-  Input
+  Input,
+  Alert
 } from 'antd';
 
-const ErrorMessage = styled.span`
+export const ErrorMessage = styled.span`
   color: ${({ theme }) => theme.danger };
   line-height: 1.5;
   -webkit-transition: color .3s cubic-bezier(.215,.61,.355,1);
@@ -18,8 +19,8 @@ const ErrorMessage = styled.span`
 type fieldProps = {
   input: Object ,
   meta: { error: any },
-  Prefix: React.Node,
-  Suffix: React.Node,
+  prefix: React.Node,
+  suffix: React.Node,
   type: string,
   label: string,
   fieldTouched: boolean
@@ -28,21 +29,27 @@ type fieldProps = {
 export const renderField =  ({
                                input ,
                                meta: { error },
-                               Prefix,
-                               Suffix,
+                               prefix,
+                               suffix,
                                type,
                                label,
                                fieldTouched
                              }: fieldProps)  =>  (
-    <React.Fragment>
-      <Input
-        {...input}
-        placeholder={label}
-        prefix={Prefix}
-        Suffix={Suffix}
-        type={type}
-      />
-      { fieldTouched && error && <ErrorMessage>{error}</ErrorMessage>}
-    </React.Fragment>
-  );
+  <React.Fragment>
+    <Input
+      {...input}
+      placeholder={label}
+      prefix={prefix}
+      Suffix={suffix}
+      type={type}
+    />
+    { fieldTouched && error && <ErrorMessage>{error}</ErrorMessage>}
+  </React.Fragment>
+);
+
+export const Info = styled(Alert)`
+  && {
+    margin: 10px 0;
+  }
+`;
 

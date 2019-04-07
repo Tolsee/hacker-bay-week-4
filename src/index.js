@@ -29,7 +29,7 @@ const store = createStore(
 
 sagaMiddleware.run(saga);
 
-ReactDOM.render(
+export const AppWithProvider = () => (
   <BrowserRouter>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
@@ -37,6 +37,10 @@ ReactDOM.render(
       </ThemeProvider>
     </Provider>
   </BrowserRouter>
+);
+
+ReactDOM.render(
+  <AppWithProvider />
   , document.getElementById('root'));
 
 registerServiceWorker();

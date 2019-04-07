@@ -8,8 +8,7 @@ import {
   Button,
   Icon
 } from 'antd';
-import { renderField } from 'components/common/Form/Field';
-import FormInfo from 'components/common/Form/Info';
+import { renderField, Info as FormInfo } from 'components/common/Form';
 import { required, minLength, email } from 'utils/validation';
 
 const { Item: FormItem } = Form;
@@ -45,7 +44,7 @@ const Signup = (props: Props) => {
             type="text"
             validate={[required, email]}
             component={renderField}
-            Prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
+            prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
             fieldTouched={!pristine}/>
         </FormItem>
         <FormItem>
@@ -55,7 +54,7 @@ const Signup = (props: Props) => {
             type="password"
             validate={[required, minLength8]}
             component={renderField}
-            Prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+            prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
             fieldTouched={!pristine}/>
         </FormItem>
         <FormItem>
